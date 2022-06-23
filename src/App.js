@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import AppMuic from "./component";
+import SongProvider from "./component/context/SongProvider";
+import UserProvider from "./component/context/UserProvider";
+import StatusProvider from "./component/context/StatusProvider";
+import { ToastContainer, toast } from 'react-toastify';
+
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserProvider>
+      <SongProvider>
+        <StatusProvider>
+           <AppMuic />
+           <ToastContainer 
+             position="bottom-left"
+             autoClose={1000}
+             hideProgressBar
+             closeOnClick
+           />
+        </StatusProvider>
+      </SongProvider>
+    </UserProvider>
+    
   );
 }
 
